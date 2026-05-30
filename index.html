@@ -59,7 +59,6 @@
             margin: 0 auto;
         }
 
-        /* Hero Section Split Layout */
         .hero-container {
             display: flex;
             justify-content: space-between;
@@ -68,16 +67,8 @@
             min-height: 75vh;
         }
 
-        .hero-text {
-            flex: 1.2;
-        }
-
-        .hero-graphic {
-            flex: 0.9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        .hero-text { flex: 1.2; }
+        .hero-graphic { flex: 0.9; display: flex; justify-content: center; align-items: center; }
 
         .hero h1.main-title {
             font-size: 5rem;
@@ -104,14 +95,9 @@
             padding-left: 20px;
         }
 
-        /* Стилизованный чертеж фасада */
-        .facade-drawing {
-            width: 100%;
-            max-width: 440px;
-            height: auto;
-        }
+        .facade-drawing { width: 100%; max-width: 440px; height: auto; }
 
-        /* Portfolio Grid */
+        /* PORTFOLIO WITH HOVER EFFECT */
         h2 {
             font-size: 2.3rem;
             margin-bottom: 40px;
@@ -129,27 +115,64 @@
         }
 
         .project-card {
-            background-color: #fff;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            height: 350px;
+            background-color: #eee;
+            overflow: hidden;
             border: 1px solid #ddd;
-            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        /* Pricing & Services */
-        .pricing-list {
-            list-style: none;
-            padding: 0;
+        /* Эффект наведения на контейнер */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(43, 43, 44, 0.85); /* Антрацит с прозрачностью */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0; /* Изначально скрыто */
+            transition: opacity 0.4s ease;
         }
 
+        .project-card:hover img {
+            transform: scale(1.05); /* Легкое увеличение фото */
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1; /* Появление текста при наведении */
+        }
+
+        .project-overlay h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* PRICING */
+        .pricing-list { list-style: none; padding: 0; }
         .pricing-list li {
             display: flex;
             justify-content: space-between;
@@ -158,74 +181,32 @@
             border-bottom: 1px solid #ddd;
             font-size: 1.2rem;
         }
+        .pricing-list .price-value { font-weight: bold; color: var(--accent-color); white-space: nowrap; }
 
-        .pricing-list .price-value {
-            font-weight: bold;
-            color: var(--accent-color);
-            white-space: nowrap;
-        }
-
-        /* Contacts Section (Исправленный блок) */
+        /* CONTACTS */
         .contacts-section {
             background-color: var(--text-color);
             color: #fff;
-            max-width: 100%;
             padding: 100px 50px;
             text-align: center;
         }
+        .contacts-section h2 { border-bottom: 2px solid #fff; color: #fff; }
+        .contacts-section a { color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: bold; }
 
-        .contacts-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contacts-section h2 {
-            border-bottom: 2px solid #fff;
-            color: #fff;
-        }
-
-        .contacts-section p {
-            font-size: 1.2rem;
-            margin: 15px 0;
-        }
-
-        .contacts-section a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-            transition: opacity 0.3s;
-        }
-
-        .contacts-section a:hover {
-            opacity: 0.8;
-        }
-
-        /* Footer */
         footer {
             background-color: #1e1e1f;
             color: rgba(255, 255, 255, 0.4);
             padding: 30px 50px;
             text-align: center;
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Адаптивность для мобильных устройств */
         @media (max-width: 900px) {
-            .hero-container {
-                flex-direction: column-reverse;
-                gap: 40px;
-                padding-top: 40px;
-            }
+            .hero-container { flex-direction: column-reverse; gap: 40px; }
             .hero h1.main-title { font-size: 3.2rem; }
-            .hero .author-name { font-size: 1.1rem; margin-bottom: 20px; }
-            .hero-graphic { width: 100%; max-width: 350px; }
-            header { flex-direction: column; gap: 15px; padding: 20px; }
-            nav a { margin: 0 10px; }
+            header { flex-direction: column; gap: 15px; }
             section { padding: 60px 20px; }
-            .pricing-list li { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .contacts-section { padding: 80px 20px; }
+            .pricing-list li { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -247,12 +228,10 @@
                 <h1 class="main-title">YOUR ARCHITECT</h1>
                 <div class="author-name">Джанболатова Сапият Алиевна</div>
                 <div class="description">
-                    Архитектор. Профессиональное проектирование и визуализация объектов. Специализируюсь на тонком балансе классических пропорций, современного минимализма и функционального хай-тека. Комплексный подход от концептуального эскиза до рабочей документации.
+                    Архитектор. Профессиональное проектирование и визуализация объектов с 2016 года. Специализируюсь на тонком балансе классических пропорций, современного минимализма и функционального хай-тека.
                 </div>
             </div>
-            
             <div class="hero-graphic">
-                <!-- Высокотехнологичный и стилизованный векторный чертеж фасада (Modern Cantilever Architecture) -->
                 <svg class="facade-drawing" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 0,50 L 400,50 M 0,100 L 400,100 M 0,150 L 400,150 M 0,200 L 400,200 M 0,250 L 400,250 M 0,300 L 400,300 M 0,350 L 400,350 M 0,400 L 400,400 M 0,450 L 400,450" stroke="#7b6352" stroke-width="0.3" stroke-opacity="0.15" />
                     <path d="M 50,0 L 50,500 M 100,0 L 100,500 M 150,0 L 150,500 M 200,0 L 200,500 M 250,0 L 250,500 M 300,0 L 300,500 M 350,0 L 350,500" stroke="#7b6352" stroke-width="0.3" stroke-opacity="0.15" />
@@ -300,10 +279,37 @@
     <section id="portfolio">
         <h2>Избранные проекты</h2>
         <div class="portfolio-grid">
-            <div class="project-card">Проект 1: Жилая архитектура</div>
-            <div class="project-card">Проект 2: Фасады и экстерьеры</div>
-            <div class="project-card">Проект 3: Интерьерные решения</div>
-            <div class="project-card">Проект 4: Ландшафтный дизайн</div>
+            <div class="project-card">
+                <img src="project1.jpg" alt="Жилой дом">
+                <div class="project-overlay">
+                    <h3>Жилой дом</h3>
+                    <p>Проектирование фасадов в классическом стиле с элементами минимализма.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project2.jpg" alt="Интерьер">
+                <div class="project-overlay">
+                    <h3>Интерьер</h3>
+                    <p>Современная кухня-гостиная с интегрированной мебелью.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project3.jpg" alt="Визуализация">
+                <div class="project-overlay">
+                    <h3>3D Визуализация</h3>
+                    <p>Фотореалистичный экстерьер загородного особняка.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project4.jpg" alt="Ландшафт">
+                <div class="project-overlay">
+                    <h3>Ландшафт</h3>
+                    <p>Проектирование придомовой территории и зон отдыха.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -318,14 +324,11 @@
         </ul>
     </section>
 
-    <!-- Выделенная секция для контактов, чтобы исправить баг со скроллом -->
     <section id="contacts" class="contacts-section">
-        <div class="contacts-wrapper">
-            <h2>Контакты</h2>
-            <p>Готова обсудить ваш проект и предложить оптимальные архитектурные решения.</p>
-            <p style="margin-top: 40px;">Телефон: <a href="tel:89288033242">8 (928) 803-32-42</a></p>
-            <p>Email: <a href="mailto:sapiyatakaeva@mail.ru">sapiyatakaeva@mail.ru</a></p>
-        </div>
+        <h2>Контакты</h2>
+        <p>Готова обсудить ваш проект и предложить оптимальные архитектурные решения.</p>
+        <p style="margin-top: 40px;">Телефон: <a href="tel:89288033242">8 (928) 803-32-42</a></p>
+        <p>Email: <a href="mailto:sapiyatakaeva@mail.ru">sapiyatakaeva@mail.ru</a></p>
     </section>
 
     <footer>
