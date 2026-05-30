@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Джанболатова Сапият Алиевна | Архитектор</title>
+    <title>YOUR ARCHITECT | Джанболатова Сапият Алиевна</title>
     <style>
         :root {
             --bg-color: #f9f8f6; /* Оттенок светлого камня */
@@ -37,7 +37,7 @@
         .logo {
             font-size: 1.2rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
@@ -54,39 +54,78 @@
         }
 
         section {
-            padding: 80px 50px;
+            padding: 100px 50px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 70vh;
+        /* Hero Section Split Layout */
+        .hero-container {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 60px;
+            min-height: 75vh;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-graphic {
+            flex: 0.8;
+            display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin: 0 0 10px 0;
-            line-height: 1.1;
+        .hero h1.main-title {
+            font-size: 4.5rem;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 0.95;
+            letter-spacing: 3px;
+            font-weight: 900;
         }
 
-        .hero p {
-            font-size: 1.5rem;
+        .hero .author-name {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin: 15px 0 5px 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
             color: var(--accent-color);
-            margin-bottom: 30px;
+            margin: 0 0 35px 0;
+            font-weight: 500;
+        }
+
+        .hero .description {
+            max-width: 600px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Стилизованный чертеж фасада */
+        .facade-drawing {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            opacity: 0.85;
         }
 
         /* Portfolio Grid */
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-bottom: 40px;
             border-bottom: 2px solid var(--text-color);
             display: inline-block;
             padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .portfolio-grid {
@@ -102,7 +141,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid #ddd;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
 
@@ -120,9 +159,16 @@
         .pricing-list li {
             display: flex;
             justify-content: space-between;
-            padding: 20px 0;
+            align-items: center;
+            padding: 22px 0;
             border-bottom: 1px solid #ddd;
             font-size: 1.2rem;
+        }
+
+        .pricing-list .price-value {
+            font-weight: bold;
+            color: var(--accent-color);
+            white-space: nowrap;
         }
 
         /* Footer / Contacts */
@@ -133,23 +179,48 @@
             text-align: center;
         }
 
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-size: 1.2rem;
+        footer h2 {
+            border-bottom: 2px solid #fff;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            header { flex-direction: column; gap: 15px; }
+        footer p {
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column-reverse;
+                gap: 40px;
+                padding-top: 40px;
+            }
+            .hero h1.main-title { font-size: 3rem; }
+            .hero .author-name { font-size: 1.4rem; }
+            .hero-graphic { width: 100%; max-width: 350px; }
+            header { flex-direction: column; gap: 15px; padding: 20px; }
             nav a { margin: 0 10px; }
+            section { padding: 60px 20px; }
+            .pricing-list li { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">S. Dzhanbolatova</div>
+        <div class="logo">YOUR ARCHITECT</div>
         <nav>
             <a href="#about">Обо мне</a>
             <a href="#portfolio">Портфолио</a>
@@ -159,38 +230,94 @@
     </header>
 
     <section id="about" class="hero">
-        <h1>Джанболатова<br>Сапият Алиевна</h1>
-        <p>Архитектор. Проектирование и визуализация с 2016 года.</p>
-        <div>Специализируюсь на создании выверенных архитектурных решений, от классических пропорций до современного минимализма и хай-тека. Детальная проработка фасадов, интеграция функциональных элементов и ландшафтный дизайн.</div>
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="main-title">YOUR ARCHITECT</h1>
+                <div class="author-name">Джанболатова Сапият Алиевна</div>
+                <div class="tagline">Архитектор. Проектирование и визуализация с 2016 года.</div>
+                <div class="description">
+                    Специализируюсь на создании выверенных архитектурных решений, от строгих классических пропорций до современного минимализма и хай-тека. Комплексный подход: от концептуального эскиза до детальной проработки инженерных и конструктивных решений.
+                </div>
+            </div>
+            
+            <div class="hero-graphic">
+                <!-- Стилизованный векторный чертеж фасада здания -->
+                <svg class="facade-drawing" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Осевые и выносные линии чертежа -->
+                    <line x1="20" y1="460" x2="380" y2="460" stroke="#7b6352" stroke-width="1.5" />
+                    <line x1="40" y1="50" x2="40" y2="480" stroke="#7b6352" stroke-dasharray="4 4" stroke-width="0.8" />
+                    <line x1="360" y1="50" x2="360" y2="480" stroke="#7b6352" stroke-dasharray="4 4" stroke-width="0.8" />
+                    
+                    <!-- Основной контур здания (Классические пропорции и минимализм) -->
+                    <rect x="50" y="120" width="300" height="340" stroke="#2b2b2c" stroke-width="2"/>
+                    <rect x="45" y="450" width="310" height="10" stroke="#2b2b2c" stroke-width="2" fill="#2b2b2c" />
+                    
+                    <!-- Карниз / Антаблемент верхнего яруса -->
+                    <rect x="40" y="105" width="320" height="15" stroke="#2b2b2c" stroke-width="1.5" />
+                    <line x1="35" y1="105" x2="365" y2="105" stroke="#2b2b2c" stroke-width="1" />
+                    
+                    <!-- Первый этаж (Высокие окна и строгая геометрия) -->
+                    <rect x="80" y="300" width="60" height="110" stroke="#2b2b2c" stroke-width="1.5"/>
+                    <line x1="80" y1="340" x2="140" y2="340" stroke="#2b2b2c" stroke-width="1"/>
+                    
+                    <!-- Входная группа в стиле Хай-Тек / Минимализм -->
+                    <rect x="170" y="280" width="60" height="170" stroke="#2b2b2c" stroke-width="2"/>
+                    <rect x="175" y="285" width="50" height="165" stroke="#7b6352" stroke-width="1"/>
+                    <line x1="200" y1="285" x2="200" y2="450" stroke="#7b6352" stroke-width="1"/>
+                    
+                    <rect x="260" y="300" width="60" height="110" stroke="#2b2b2c" stroke-width="1.5"/>
+                    <line x1="260" y1="340" x2="320" y2="340" stroke="#2b2b2c" stroke-width="1"/>
+                    
+                    <!-- Межэтажный карниз -->
+                    <line x1="50" y1="260" x2="350" y2="260" stroke="#2b2b2c" stroke-width="1.5" />
+                    <line x1="50" y1="265" x2="350" y2="265" stroke="#7b6352" stroke-width="1" />
+                    
+                    <!-- Второй этаж (Ритм оконных проемов) -->
+                    <rect x="80" y="150" width="50" height="80" stroke="#2b2b2c" stroke-width="1.5"/>
+                    <line x1="80" y1="210" x2="130" y2="210" stroke="#2b2b2c" stroke-width="0.8"/>
+                    
+                    <rect x="175" y="150" width="50" height="80" stroke="#2b2b2c" stroke-width="1.5"/>
+                    <line x1="175" y1="210" x2="225" y2="210" stroke="#2b2b2c" stroke-width="0.8"/>
+                    
+                    <rect x="270" y="150" width="50" height="80" stroke="#2b2b2c" stroke-width="1.5"/>
+                    <line x1="270" y1="210" x2="320" y2="210" stroke="#2b2b2c" stroke-width="0.8"/>
+                    
+                    <!-- Тонкие линии остекления / отражения (световоздушная графика) -->
+                    <line x1="95" y1="160" x2="115" y2="190" stroke="#7b6352" stroke-width="0.5" />
+                    <line x1="190" y1="160" x2="210" y2="190" stroke="#7b6352" stroke-width="0.5" />
+                    <line x1="285" y1="160" x2="305" y2="190" stroke="#7b6352" stroke-width="0.5" />
+                </svg>
+            </div>
+        </div>
     </section>
 
     <section id="portfolio">
         <h2>Избранные проекты</h2>
         <div class="portfolio-grid">
-            <!-- Места для ваших изображений -->
-            <div class="project-card">Проект 1: Фасады и экстерьер</div>
-            <div class="project-card">Проект 2: Интерьерные решения</div>
-            <div class="project-card">Проект 3: Ландшафтный дизайн</div>
-            <div class="project-card">Проект 4: Жилая архитектура</div>
+            <div class="project-card">Проект 1: Жилая архитектура</div>
+            <div class="project-card">Проект 2: Фасады и экстерьеры</div>
+            <div class="project-card">Проект 3: Интерьерные решения</div>
+            <div class="project-card">Проект 4: Ландшафтный дизайн</div>
         </div>
     </section>
 
     <section id="pricing">
         <h2>Услуги и расценки</h2>
         <ul class="pricing-list">
-            <li><span>Эскизный проект частного дома</span> <span>от XX XXX ₽</span></li>
-            <li><span>Архитектурные решения (АР)</span> <span>от XX XXX ₽</span></li>
-            <li><span>3D Визуализация экстерьера/интерьера</span> <span>от XX XXX ₽</span></li>
-            <li><span>Проектирование ландшафта и малых форм</span> <span>от XX XXX ₽</span></li>
+            <li><span>Проектное предложение</span> <span class="price-value">500 ₽ / м²</span></li>
+            <li><span>Архитектурные решения (АР, том 3)</span> <span class="price-value">700 ₽ / м²</span></li>
+            <li><span>3D Визуализация</span> <span class="price-value">1 500 ₽ / м²</span></li>
+            <li><span>Дизайн интерьера</span> <span class="price-value">от 2 500 ₽ / м²</span></li>
+            <li><span>Конструктивные решения (КР)</span> <span class="price-value">700 ₽ / м²</span></li>
         </ul>
     </section>
 
     <footer id="contacts">
-        <h2>Свяжитесь со мной</h2>
+        <h2>Контакты</h2>
         <p>Готова обсудить ваш проект и предложить оптимальные архитектурные решения.</p>
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>Телефон: <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
-        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.7;">&copy; 2026 Джанболатова Сапият Алиевна. Все права защищены.</p>
+        <p style="margin-top: 30px;">Телефон: <a href="tel:89288033242">8 (928) 803-32-42</a></p>
+        <p>Email: <a href="mailto:sapiyatakaeva@mail.ru">sapiyatakaeva@mail.ru</a></p>
+        <p style="margin-top: 50px; font-size: 0.9rem; opacity: 0.5;">&copy; 2026 YOUR ARCHITECT | Джанболатова Сапият Алиевна. Все права защищены.</p>
     </footer>
 
 </body>
